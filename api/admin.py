@@ -6,4 +6,3 @@ admin.site.register(LoanProgram)
 admin.site.register(LoanBorrower)
 admin.site.register(LoanInquiry)
 admin.site.register(Untrusted)
-

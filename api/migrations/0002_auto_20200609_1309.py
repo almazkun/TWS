@@ -5,33 +5,36 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('api', '0001_initial'),
-    ]
+    dependencies = [("api", "0001_initial")]
 
     operations = [
-        migrations.RemoveField(
-            model_name='loanprogram',
-            name='lean_max',
-        ),
+        migrations.RemoveField(model_name="loanprogram", name="lean_max"),
         migrations.AddField(
-            model_name='loanprogram',
-            name='loan_max',
-            field=models.PositiveIntegerField(default=0, verbose_name='Highest Loan Possible'),
+            model_name="loanprogram",
+            name="loan_max",
+            field=models.PositiveIntegerField(
+                default=0, verbose_name="Highest Loan Possible"
+            ),
         ),
         migrations.AlterField(
-            model_name='loanprogram',
-            name='borrower_age_max',
-            field=models.PositiveIntegerField(default=0, verbose_name='Oldest Possible'),
+            model_name="loanprogram",
+            name="borrower_age_max",
+            field=models.PositiveIntegerField(
+                default=0, verbose_name="Oldest Possible"
+            ),
         ),
         migrations.AlterField(
-            model_name='loanprogram',
-            name='borrower_age_min',
-            field=models.PositiveIntegerField(default=0, verbose_name='Youngest Possible'),
+            model_name="loanprogram",
+            name="borrower_age_min",
+            field=models.PositiveIntegerField(
+                default=0, verbose_name="Youngest Possible"
+            ),
         ),
         migrations.AlterField(
-            model_name='loanprogram',
-            name='loan_min',
-            field=models.PositiveIntegerField(default=0, verbose_name='Lowest Loan Possible'),
+            model_name="loanprogram",
+            name="loan_min",
+            field=models.PositiveIntegerField(
+                default=0, verbose_name="Lowest Loan Possible"
+            ),
         ),
     ]

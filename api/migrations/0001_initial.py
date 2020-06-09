@@ -8,73 +8,160 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='LoanBorrower',
+            name="LoanBorrower",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('IIN', models.CharField(max_length=12, verbose_name='Individual Identification Number')),
-                ('dob', models.DateField(verbose_name='Date of Birth')),
-                ('created_on', models.DateTimeField(auto_now_add=True, verbose_name='Created')),
-                ('updated_on', models.DateTimeField(auto_now=True, verbose_name='Updated')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "IIN",
+                    models.CharField(
+                        max_length=12, verbose_name="Individual Identification Number"
+                    ),
+                ),
+                ("dob", models.DateField(verbose_name="Date of Birth")),
+                (
+                    "created_on",
+                    models.DateTimeField(auto_now_add=True, verbose_name="Created"),
+                ),
+                (
+                    "updated_on",
+                    models.DateTimeField(auto_now=True, verbose_name="Updated"),
+                ),
             ],
             options={
-                'verbose_name': 'IIN',
-                'verbose_name_plural': 'IINs',
-                'ordering': ['created_on'],
+                "verbose_name": "IIN",
+                "verbose_name_plural": "IINs",
+                "ordering": ["created_on"],
             },
         ),
         migrations.CreateModel(
-            name='LoanProgram',
+            name="LoanProgram",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('loan_program_name', models.CharField(max_length=100, verbose_name='Program name')),
-                ('loan_min', models.IntegerField(verbose_name='Lowest Loan Possible')),
-                ('lean_max', models.IntegerField(verbose_name='Highest Loan Possible')),
-                ('borrower_age_min', models.IntegerField(verbose_name='Youngest Possible')),
-                ('borrower_age_max', models.IntegerField(verbose_name='Oldest Possible')),
-                ('created_on', models.DateTimeField(auto_now_add=True, verbose_name='Created')),
-                ('updated_on', models.DateTimeField(auto_now=True, verbose_name='Updated')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "loan_program_name",
+                    models.CharField(max_length=100, verbose_name="Program name"),
+                ),
+                ("loan_min", models.IntegerField(verbose_name="Lowest Loan Possible")),
+                ("lean_max", models.IntegerField(verbose_name="Highest Loan Possible")),
+                (
+                    "borrower_age_min",
+                    models.IntegerField(verbose_name="Youngest Possible"),
+                ),
+                (
+                    "borrower_age_max",
+                    models.IntegerField(verbose_name="Oldest Possible"),
+                ),
+                (
+                    "created_on",
+                    models.DateTimeField(auto_now_add=True, verbose_name="Created"),
+                ),
+                (
+                    "updated_on",
+                    models.DateTimeField(auto_now=True, verbose_name="Updated"),
+                ),
             ],
             options={
-                'verbose_name': 'Loan Program',
-                'verbose_name_plural': 'Loan Programs',
-                'ordering': ['created_on'],
+                "verbose_name": "Loan Program",
+                "verbose_name_plural": "Loan Programs",
+                "ordering": ["created_on"],
             },
         ),
         migrations.CreateModel(
-            name='Untrusted',
+            name="Untrusted",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('untrusted_IIN', models.CharField(max_length=12, verbose_name='Untrusted person')),
-                ('created_on', models.DateTimeField(auto_now_add=True, verbose_name='Created')),
-                ('updated_on', models.DateTimeField(auto_now=True, verbose_name='Updated')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "untrusted_IIN",
+                    models.CharField(max_length=12, verbose_name="Untrusted person"),
+                ),
+                (
+                    "created_on",
+                    models.DateTimeField(auto_now_add=True, verbose_name="Created"),
+                ),
+                (
+                    "updated_on",
+                    models.DateTimeField(auto_now=True, verbose_name="Updated"),
+                ),
             ],
             options={
-                'verbose_name': 'Untrusted person',
-                'verbose_name_plural': 'Untrusted people',
-                'ordering': ['created_on'],
+                "verbose_name": "Untrusted person",
+                "verbose_name_plural": "Untrusted people",
+                "ordering": ["created_on"],
             },
         ),
         migrations.CreateModel(
-            name='LoanInquiry',
+            name="LoanInquiry",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('inquiry_amount', models.IntegerField()),
-                ('inquiry_approved', models.BooleanField(default=False)),
-                ('inquiry_rejected_because', models.CharField(default='Not Applied Yet', max_length=100)),
-                ('created_on', models.DateTimeField(auto_now_add=True, verbose_name='Created')),
-                ('updated_on', models.DateTimeField(auto_now=True, verbose_name='Updated')),
-                ('inquiry_borrower', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='api.LoanBorrower')),
-                ('inquiry_program', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='api.LoanProgram')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("inquiry_amount", models.IntegerField()),
+                ("inquiry_approved", models.BooleanField(default=False)),
+                (
+                    "inquiry_rejected_because",
+                    models.CharField(default="Not Applied Yet", max_length=100),
+                ),
+                (
+                    "created_on",
+                    models.DateTimeField(auto_now_add=True, verbose_name="Created"),
+                ),
+                (
+                    "updated_on",
+                    models.DateTimeField(auto_now=True, verbose_name="Updated"),
+                ),
+                (
+                    "inquiry_borrower",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="api.LoanBorrower",
+                    ),
+                ),
+                (
+                    "inquiry_program",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="api.LoanProgram",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Inquiry',
-                'verbose_name_plural': 'Inquiries',
-                'ordering': ['created_on'],
+                "verbose_name": "Inquiry",
+                "verbose_name_plural": "Inquiries",
+                "ordering": ["created_on"],
             },
         ),
     ]

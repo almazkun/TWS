@@ -4,8 +4,8 @@ from rest_framework.response import Response
 
 
 # Create your views here.
-@api_view(['GET', 'POST'])
+@api_view(["GET", "POST"])
 def validate_IIN(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         return Response({"message": "Got some data!", "data": request.data})
     return Response({"message": "Nothing is there"})
