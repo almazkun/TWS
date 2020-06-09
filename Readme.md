@@ -1,48 +1,30 @@
-# DRFx
+# Requirements 
 
-A framework for launching new Django Rest Framework projects quickly. Comes with a custom user model, login/logout/signup, social authentication via django-allauth, and more.
+Задание: Нужно сделать api для создания кредитных заявок.
 
-## Features
+Стэк технологий - бэк(django + rest_framework) сделать API, для создания заявок.
+Сделать админ панель (django admin) для всех моделей.
 
-- Django 3.0, Django REST Framework 3.11, and Python 3.7
-- Custom user model
-- Token-based auth
-- Signup/login/logout
-- [django-allauth](https://github.com/pennersr/django-allauth) for social auth
-- [Pipenv](https://github.com/pypa/pipenv) for virtualenvs
+Модели: 
+1. программма - мин. и макс. сумма кредита, мин. и макс. возраст заемщика
+2. заемщик - иин, дата рождения
+3. заявки - программа, заемщик, сумма, статус (одобрено, отказ), причина отказа
+4. черный список - иин
 
-## First-time setup
+Запрос на создание заявки: парсим иин, первые 6 цифр - это дата рождения в формате ггммдд.
+При создании заявки, нужно запустить цепочку из проверок.
+Проверки должны состоять из отдельных классов, при "отказе" должны вернуть описание отказа.
+Если заявка прошла все проверки указываем статус "одобрено".
 
-1.  Make sure Python 3.7x and Pipenv are already installed. [See here for help](https://djangoforbeginners.com/initial-setup/).
-2.  Clone the repo and configure the virtual environment:
+Программа и черный список редактируются через админ панель.
 
-```
-$ git clone https://github.com/wsvincent/drfx.git
-$ cd drfx
-$ pipenv install
-$ pipenv shell
-```
+Проверки:
+1. Проверка по сумме кредита
+если не походит по сумме, тогда отказ "Заявка не подходит по сумме"
+если не возрасту, тогда отказ "Заемщик не подходит по возрасту"
 
-3.  Set up the initial migration for our custom user models in users and build the database.
+2. Если иин есть в списке Индивидуальных предпринимателей (ИП), тогда отказ "иин является ИП"
+ссылка на запрос https://stat.gov.kz/api/juridical/gov/?bin={иин}&lang=ru
 
-```
-(drfx) $ python manage.py makemigrations users
-(drfx) $ python manage.py migrate
-(drfx) $ python manage.py createsuperuser
-(drfx) $ python manage.py runserver
-```
-
-4.  Endpoints
-
-Login with your superuser account. Then navigate to all users. Logout. Sign up for a new account and repeat the login, users, logout flow.
-
-- login - http://127.0.0.1:8000/api/v1/rest-auth/login/
-- all users - http://127.0.0.1:8000/api/v1/users
-- logout - http://127.0.0.1:8000/api/v1/rest-auth/logout/
-- signup - http://127.0.0.1:8000/api/v1/rest-auth/registration/
-
----
-
-Want to learn more about Django REST Framework? I've written an entire book that takes a project-based approach to building web APIs with Django. The first 2 chapters are available for free online at [https://djangoforapis.com/](https://djangoforapis.com/).
-
-[![Django for APIs](https://learndjango.com/static/images/books/dfa_cover_30.jpg)](https://djangoforapis.com)
+3. Проверка по черному списку
+если найден в черном списке, тогда отказ "Заемщик в черном списке"
