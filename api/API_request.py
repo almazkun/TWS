@@ -1,6 +1,7 @@
 from .models import LoanProgram, LoanBorrower, LoanInquiry
 
 
+
 def create_new_borrower(IIN):
     obj = LoanBorrower(IIN=IIN)
     obj.dob_assignment()
@@ -18,4 +19,4 @@ def create_new_inquiry(IIN, amount):
     obj.save()
     
     
-    
+
