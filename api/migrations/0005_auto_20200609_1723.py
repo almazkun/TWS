@@ -5,14 +5,12 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('api', '0004_auto_20200609_1429'),
-    ]
+    dependencies = [("api", "0004_auto_20200609_1429")]
 
     operations = [
         migrations.AlterField(
-            model_name='loanborrower',
-            name='dob',
-            field=models.DateField(default='0001-01-01', verbose_name='Date of Birth'),
-        ),
+            model_name="loanborrower",
+            name="dob",
+            field=models.DateField(default="0001-01-01", verbose_name="Date of Birth"),
+        )
     ]

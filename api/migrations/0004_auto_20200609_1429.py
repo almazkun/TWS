@@ -5,18 +5,20 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('api', '0003_auto_20200609_1321'),
-    ]
+    dependencies = [("api", "0003_auto_20200609_1321")]
 
     operations = [
         migrations.AddField(
-            model_name='loanprogram',
-            name='current_loan_program',
-            field=models.BooleanField(default=0, verbose_name='Current loan program'),
+            model_name="loanprogram",
+            name="current_loan_program",
+            field=models.BooleanField(default=0, verbose_name="Current loan program"),
         ),
         migrations.AddConstraint(
-            model_name='loanprogram',
-            constraint=models.UniqueConstraint(condition=models.Q(current_loan_program=True), fields=('current_loan_program',), name='unique_current_loan_program'),
+            model_name="loanprogram",
+            constraint=models.UniqueConstraint(
+                condition=models.Q(current_loan_program=True),
+                fields=("current_loan_program",),
+                name="unique_current_loan_program",
+            ),
         ),
     ]

@@ -14,15 +14,9 @@ def IIN_to_DOB(IIN):
     5 - для мужчин, родившихся в 21 веке;
     6 - для женщин, родившихся в 21 веке. 
     """
-    centuries = {
-        "1":"18",
-        "2":"18",
-        "3":"19",
-        "4":"19",
-        "5":"20",
-        "6":"20",
-    }
+    centuries = {"1": "18", "2": "18", "3": "19", "4": "19", "5": "20", "6": "20"}
     return f"{centuries[IIN[6]]}{IIN[:2]}-{IIN[2:4]}-{IIN[4:6]}"
+
 
 def calculate_age(born):
     born = datetime.strptime(str(born), "%Y-%m-%d")
@@ -31,7 +25,7 @@ def calculate_age(born):
 
 
 def is_a_business(IIN):
-    
+
     API_call_url = f"https://stat.gov.kz/api/juridical/gov/?bin={IIN}&lang=ru"
     try:
         request = requests.get(API_call_url)
@@ -48,6 +42,4 @@ is_a_business("870503399132")
 is_a_business("000000200000")
 
 
-
-
-{'success': False, 'obj': None, 'description': None}
+{"success": False, "obj": None, "description": None}

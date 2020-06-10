@@ -5,14 +5,17 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('api', '0006_auto_20200610_1105'),
-    ]
+    dependencies = [("api", "0006_auto_20200610_1105")]
 
     operations = [
         migrations.AlterField(
-            model_name='loanborrower',
-            name='IIN',
-            field=models.CharField(db_index=True, max_length=12, unique=True, verbose_name='Individual Identification Number'),
-        ),
+            model_name="loanborrower",
+            name="IIN",
+            field=models.CharField(
+                db_index=True,
+                max_length=12,
+                unique=True,
+                verbose_name="Individual Identification Number",
+            ),
+        )
     ]

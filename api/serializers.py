@@ -7,11 +7,6 @@ from .models import LoanInquiry
 class LoanInquirySerializer(serializers.BaseSerializer):
     status = ""
     msg = ""
-    
-    
-    def to_representation(self, instance):
-        return {
-            'status': instance.inquiry_approved,
-            'msg': inquiry_rejected_because
-        }
 
+    def to_representation(self, instance):
+        return {"status": instance.inquiry_approved, "msg": inquiry_rejected_because}

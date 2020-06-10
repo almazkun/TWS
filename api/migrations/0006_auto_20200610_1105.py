@@ -5,34 +5,40 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('api', '0005_auto_20200609_1723'),
-    ]
+    dependencies = [("api", "0005_auto_20200609_1723")]
 
     operations = [
         migrations.AlterField(
-            model_name='loanborrower',
-            name='IIN',
-            field=models.CharField(db_index=True, max_length=12, verbose_name='Individual Identification Number'),
+            model_name="loanborrower",
+            name="IIN",
+            field=models.CharField(
+                db_index=True,
+                max_length=12,
+                verbose_name="Individual Identification Number",
+            ),
         ),
         migrations.AlterField(
-            model_name='loaninquiry',
-            name='inquiry_amount',
+            model_name="loaninquiry",
+            name="inquiry_amount",
             field=models.IntegerField(db_index=True),
         ),
         migrations.AlterField(
-            model_name='loaninquiry',
-            name='inquiry_approved',
+            model_name="loaninquiry",
+            name="inquiry_approved",
             field=models.BooleanField(db_index=True, default=False),
         ),
         migrations.AlterField(
-            model_name='loanprogram',
-            name='current_loan_program',
-            field=models.BooleanField(db_index=True, default=False, verbose_name='Current loan program'),
+            model_name="loanprogram",
+            name="current_loan_program",
+            field=models.BooleanField(
+                db_index=True, default=False, verbose_name="Current loan program"
+            ),
         ),
         migrations.AlterField(
-            model_name='loanprogram',
-            name='loan_program_name',
-            field=models.CharField(db_index=True, max_length=100, verbose_name='Program name'),
+            model_name="loanprogram",
+            name="loan_program_name",
+            field=models.CharField(
+                db_index=True, max_length=100, verbose_name="Program name"
+            ),
         ),
     ]
