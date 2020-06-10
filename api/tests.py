@@ -127,5 +127,4 @@ class ModelsTest(TestCase):
         self.test_models_methods.inquiry_is_approved()
         assert self.test_models_methods.inquiry_approved == True
         assert self.test_models_methods.inquiry_rejected_because == "Approved!"
-        
-        {"IIN":"7712313100200", "amount":"500"}
+       
