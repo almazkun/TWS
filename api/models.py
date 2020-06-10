@@ -60,6 +60,7 @@ class LoanBorrower(models.Model):
 
 
 class LoanInquiry(models.Model):
+    
     inquiry_program = models.ForeignKey(LoanProgram, on_delete=models.CASCADE, db_index=True)
     inquiry_borrower = models.ForeignKey(LoanBorrower, on_delete=models.CASCADE, db_index=True)
     inquiry_amount = models.IntegerField(db_index=True)
@@ -119,9 +120,6 @@ class LoanInquiry(models.Model):
                 self.inquiry_rejected_because = "Error, Age is incorrect"
         else:
             self.inquiry_rejected_because = "Error, Amount is incorrect"
-
-        
-    
 
 
 class Untrusted(models.Model):

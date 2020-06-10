@@ -78,6 +78,11 @@ class ModelsTest(TestCase):
         assert str(self.test_create_new_inquiry_obj.inquiry_borrower) == self.test_iin
         assert self.test_create_new_inquiry_obj.inquiry_amount == self.test_amount
         
+        methods_IIN = "7712313100200"
+        methods_amount = 500
+        request = create_new_inquiry(methods_IIN, methods_amount)
+
+        assert request == {"status": True, "msg": "Approved!"}
 
     def test_IIN_to_DOB(self):
         assert IIN_to_DOB("000000100000") == "1800-00-00"
@@ -102,7 +107,7 @@ class ModelsTest(TestCase):
 
 
     def test_models_methods(self):
-        methods_IIN = "7712313100200"
+        methods_IIN = "7712313100200000"
         methods_amount = 500
         create_new_inquiry(methods_IIN, methods_amount)
         self.test_models_methods = LoanInquiry.objects.get(pk=2)
@@ -122,3 +127,5 @@ class ModelsTest(TestCase):
         self.test_models_methods.inquiry_is_approved()
         assert self.test_models_methods.inquiry_approved == True
         assert self.test_models_methods.inquiry_rejected_because == "Approved!"
+        
+        {"IIN":"7712313100200", "amount":"500"}
