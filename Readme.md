@@ -1,30 +1,22 @@
 # Requirements 
 
-Задание: Нужно сделать api для создания кредитных заявок.
+Task: Create a API end point for loan inquiries. 
 
-Стэк технологий - бэк(django + rest_framework) сделать API, для создания заявок.
-Сделать админ панель (django admin) для всех моделей.
+Django, Django REST framework needs to be used. 
+Django Admin for all app Models.
 
-Модели: 
-1. программма - мин. и макс. сумма кредита, мин. и макс. возраст заемщика
-2. заемщик - иин, дата рождения
-3. заявки - программа, заемщик, сумма, статус (одобрено, отказ), причина отказа
-4. черный список - иин
+Models:
+1. Program - min and max loan amount, min and max age applicable age.
+2. Borrower - ID number, DOB.
+3. Inquiry - Program, Borrower, Loan Amount, Status (approved, rejected), reason for rejection.
+4. List of Untrusted ID numbers
 
-Запрос на создание заявки: парсим иин, первые 6 цифр - это дата рождения в формате ггммдд.
-При создании заявки, нужно запустить цепочку из проверок.
-Проверки должны состоять из отдельных классов, при "отказе" должны вернуть описание отказа.
-Если заявка прошла все проверки указываем статус "одобрено".
+API INPUT: ID number and Amount.
 
-Программа и черный список редактируются через админ панель.
+Following things needs to be checked:
+1. Check if the amount is within the min/max loan amount from the Program, (if not -> reject).
+2. Check if the Age of the Borrower within the applicable range (Assign DOB -  based on first 6 numbers of ID (YYMMDD) are DOB), (if not -> reject).
+3. Check if the individual is a Sole Proprietor (make API request to the Governmental service https://stat.gov.kz/api/juridical/gov/?bin={IDnumber}&lang=ru), (if yes -> reject). 
+4. If in Untrusted List, (if yes -> reject).
 
-Проверки:
-1. Проверка по сумме кредита
-если не походит по сумме, тогда отказ "Заявка не подходит по сумме"
-если не возрасту, тогда отказ "Заемщик не подходит по возрасту"
-
-2. Если иин есть в списке Индивидуальных предпринимателей (ИП), тогда отказ "иин является ИП"
-ссылка на запрос https://stat.gov.kz/api/juridical/gov/?bin={иин}&lang=ru
-
-3. Проверка по черному списку
-если найден в черном списке, тогда отказ "Заемщик в черном списке"
+OUTPUT: Approved or Rejected, reason. 
