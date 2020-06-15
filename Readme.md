@@ -25,18 +25,18 @@ OUTPUT: Approved or Rejected, reason.
 [from subreddit django](https://www.reddit.com/r/django/comments/h7cmvf/code_review_my_job_interview_assignment/)
 
 * https://www.reddit.com/r/django/comments/h7cmvf/code_review_my_job_interview_assignment/ftrp6hv?utm_source=share&utm_medium=web2x
-  - No tests against the actual api urls, coverage is probably low.
+- No tests against the actual api urls, coverage is probably low.
 
-  - No use of model viewsets or model serializers.
+- No use of model viewsets or model serializers.
 
-  - Your django project and django apps aren't well separated. The urls layout is a bit off.
+- Your django project and django apps aren't well separated. The urls layout is a bit off.
 
-  - Some debugging code left over.
+- Some debugging code left over.
 
-  - No tagged release.
+- No tagged release.
 
-  - External api should probably have had a client class.
-  
+- External api should probably have had a client class.
+
  ```python
 class GovAPI(object):
     base_url = "https://api.com"
